@@ -5,6 +5,21 @@ angular.module('app')
 
     listOfQuotes = [
       {
+        quote: 'This has been a wild ride',
+        author: 'Steve',
+        rating: 6,
+      },
+      {
+        quote: 'Remember, it was much harder a week ago',
+        author: 'Steve',
+        rating: 6,
+      },
+      {
+        quote: 'Get yourself a beer',
+        author: 'Steve',
+        rating: 6,
+      },
+      {
         quote:'If debugging is the process of removing software bugs, then programming must be the process of putting them in.',
         author: 'Edsger Dijkstra',
         rating: 4,

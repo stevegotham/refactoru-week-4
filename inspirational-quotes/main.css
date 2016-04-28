@@ -35,3 +35,8 @@ header h1 {
 .quote:first-of-type {
   margin-top: 10px;
 }
+
+.clear {
+  margin-top: -53px;
+  margin-left: 10px;
+}

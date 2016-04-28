@@ -23,14 +23,15 @@
         <button type='submit' class='btn btn-sm btn-warning'>Submit</button>
       </form>
     </header>
-    <div class="row">
+    <div class="col-xs-1 col-xs-offset-8">
+      <button class="btn btn-sm btn-info clear" ng-show="cont.show" ng-click="cont.clear()">Clear</button>
+    </div>
       <div class="row">
-        <div ng-repeat='quote in cont.listOfQuotes track by $index' class='col-xs-6 col-xs-offset-3 quote' ng-click="cont.displayQuoteOptions()">
+        <div ng-repeat='quote in cont.listOfQuotes | orderBy : quote.rating | filter : {author : cont.quoteAuthor}' class='col-xs-6 col-xs-offset-3 quote' ng-click="cont.displayQuoteOptions()">
           <h3>{{ quote.quote }}</h3>
-          <blockquote>- {{ quote.author }}</blockquote>
+          <blockquote ng-click="cont.authorList(quote)" ng-model="cont.quoteAuthor">- {{ quote.author }}</blockquote>
           <span class="col-xs-1 col-xs-offset-10 rating">Rating:{{ quote.rating }}</span>
         </div>
       </div>
-    </div>
   </body>
 </html>

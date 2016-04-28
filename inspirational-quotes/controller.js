@@ -7,6 +7,8 @@ angular.module('app')
     cont.listOfQuotes = myFactory.listOfQuotes
     cont.quote
     cont.author
+    cont.show = false
+    cont.rating = cont.listOfQuotes.rating
 
     cont.Quote = function(quote,author) {
       this.quote = quote
@@ -21,6 +23,16 @@ angular.module('app')
     }
 
     cont.displayQuoteOptions = function() {
+      
+    }
 
+    cont.authorList = function(quote) {
+      cont.quoteAuthor = quote.author
+      cont.show = true
+    }
+
+    cont.clear = function() {
+      cont.quoteAuthor = ''
+      cont.show = false
     }
   }
