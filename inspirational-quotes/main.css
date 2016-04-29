@@ -1,27 +1,31 @@
 body {
   background-color: lightyellow;
 }
+
 input{
   height: 30px;
 }
 
-header div img {
-  margin: 8px;
+.lightbox {
+  background-color: rgba(110, 110, 110, 0.8);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
 }
 
-img {
+.header div img {
+  margin-top: 15px;
   width: 400px;
-  /*display: inline;*/
   float: right;
 }
-form {
-  /*clear: both;*/
-}
 
-header h1 {
+.header h1 {
   font-size: 60px;
 }
-
+.header h1 span {
+  font-size: 130px;
+}
 .btn {
   margin-top:-4px;
 }
@@ -39,4 +43,18 @@ header h1 {
 .clear {
   margin-top: -53px;
   margin-left: 10px;
+}
+
+#popup {
+  width: 600px;
+  background-color: lightyellow;
+  border-radius: 8px;
+  box-shadow: 1px 1px 50px;
+  position: fixed;
+  left: 30%;
+  transform: translateY(50%);
+  padding: 15px;
+}
+#popup button {
+  margin: 0 0 3px 2px;
 }

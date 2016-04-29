@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Inspirational Quotes</title>
     <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.js"></script>
     <script type="text/javascript" src="main.js"></script>
     <script type="text/javascript" src="controller.js"></script>
     <script type="text/javascript" src="factory.js"></script>
@@ -12,23 +13,31 @@
   </head>
 
   <body ng-controller="controller as cont">
-    <header class="page-header">
+    <div class="header">
       <div class="col-xs-6 col-xs-offset-3">
         <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRIAdYuFtxArjfLLS29RKJGZgMtXE-mcon-VkXkHyZSKZUdG0lw">
-        <h1 ng-click="cont.speak()">Get<br>Inspired</h1>
+        <h1 ng-click="cont.speak()"><span>Be</span><br>Inspired</h1>
       </div>
       <form ng-submit='cont.addQuote()' class="col-xs-6 col-xs-offset-3">
         <input type="text" placeholder="enter a quote" required="true" ng-model='cont.newQuote' name='cont.inputQuote'>
         <input type="text" placeholder="enter the author" required="true" ng-model='cont.newAuthor'>
         <button type='submit' class='btn btn-sm btn-warning'>Submit</button>
       </form>
-    </header>
+    </div>
+    <div ng-show="cont.popupDiv" class="lightbox">
+      <div id="popup">
+        <h2>{{ cont.currentQuote.quote }}</h2>
+        <input type='text' ng-model="cont.userRating" placeholder="Rate this quote (1-5)"></input>
+        <button ng-click="cont.clearIt()" class="btn btn-sm btn-info">Submit</button>
+        <button ng-click="cont.deleteIt()" class="btn btn-sm btn-danger">Delete this quote</button>
+      </div>
+    </div>
     <div class="col-xs-1 col-xs-offset-8">
       <button class="btn btn-sm btn-info clear" ng-show="cont.show" ng-click="cont.clear()">Clear</button>
     </div>
       <div class="row">
-        <div ng-repeat='quote in cont.listOfQuotes | orderBy : quote.rating | filter : {author : cont.quoteAuthor}' class='col-xs-6 col-xs-offset-3 quote' ng-click="cont.displayQuoteOptions()">
-          <h3>{{ quote.quote }}</h3>
+        <div ng-repeat='quote in cont.listOfQuotes | filter : {author : cont.quoteAuthor}' class='col-xs-6 col-xs-offset-3 quote' >
+          <h3 ng-click="cont.displayQuoteOptions(quote)">{{ quote.quote }}</h3>
           <blockquote ng-click="cont.authorList(quote)" ng-model="cont.quoteAuthor">- {{ quote.author }}</blockquote>
           <span class="col-xs-1 col-xs-offset-10 rating">Rating:{{ quote.rating }}</span>
         </div>
