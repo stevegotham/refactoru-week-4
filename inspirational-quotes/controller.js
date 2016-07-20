@@ -49,8 +49,9 @@ angular.module('app')
       cont.userRating = ''
     }
 
-    cont.deleteIt = function() {
-      console.log(cont.currentQuote)
+    cont.deleteIt = function(quote) {
+      cont.listOfQuotes.splice(cont.listOfQuotes.indexOf(quote), 1);
+      cont.popupDiv = false;
     }
 
     cont.storeData = function() {
